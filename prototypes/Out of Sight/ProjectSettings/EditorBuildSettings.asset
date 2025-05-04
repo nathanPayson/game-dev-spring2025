@@ -53,7 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AntiBreakout2Prototype.unity
     guid: b5fb3a36690facd45a0f1b4190af3cb7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/AntiBreakout1TestScene.unity
     guid: eb1676f50bf09d24c8201c191ef39ac1
   - enabled: 1

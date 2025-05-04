@@ -104,11 +104,10 @@ public class Cluster : MonoBehaviour
                 //}
                 //else
                 //{
-               // b = Instantiate(brickprefab, new Vector3(gameObject.transform.position.x + j * brickWidth, gameObject.transform.position.y - i * brickLength, 0), Quaternion.identity);
+                b = Instantiate(brickprefab, new Vector3(gameObject.transform.position.x + j * brickWidth, gameObject.transform.position.y - i * brickLength, 0), Quaternion.identity);
                 //Test for DenseBrick
-                b = Instantiate(denseBrickprefab, new Vector3(gameObject.transform.position.x + j * brickWidth, gameObject.transform.position.y - i * brickLength, 0), Quaternion.identity);
+                //b = Instantiate(denseBrickprefab, new Vector3(gameObject.transform.position.x + j * brickWidth, gameObject.transform.position.y - i * brickLength, 0), Quaternion.identity);
                 //}
-                b.GetComponent<Brick>().setBounces(brickHealth);
                 b.transform.SetParent(gameObject.transform);
                 swarm[i,j] = b;
                 b.GetComponent<Brick>().setSwarmParent(gameObject);
@@ -247,7 +246,6 @@ public class Cluster : MonoBehaviour
         defeated = false;
         for(int i=0;i<rowCount;i++){
             for(int j=0;j<columnCount;j++){
-                Debug.Log("RESET!");
                 bricks[i,j].SetActive(true);
             }
         }
@@ -284,6 +282,7 @@ public class Cluster : MonoBehaviour
     public void badBrickHitAlert()
     {
         GameManager.sharedInstance.gameOver();
+        Debug.Log("BAD BRICK HIT");
     }
 
     public int getActiveCount()

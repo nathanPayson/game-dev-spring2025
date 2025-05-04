@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject lossPanel;
     [SerializeField] GameObject winPanel;
-    [SerializeField] GameObject upgradeScreen;
 
     [SerializeField] GameObject startPanel;
     [SerializeField] GameObject controlPanel1;
@@ -26,10 +25,6 @@ public class UIManager : MonoBehaviour
         winPanel.SetActive(false);
         lossPanel.SetActive(false);
         startPanel.SetActive(true);
-        if (GameManager.checkScene("AntiBreakout1"))
-        {
-            upgradeScreen.SetActive(false);
-        }
 
         if (GameManager.checkScene("NewAntiBreakout2")||GameManager.checkSceneContains("AB2LV"))
         {
@@ -50,20 +45,6 @@ public class UIManager : MonoBehaviour
         else if (gameWon())
         {
             winPanel.SetActive(true);
-        }
-        else if (IsUpgradeScreenActive()) // Renamed method
-        {
-            if (GameManager.checkScene("AntiBreakout2"))
-            {
-                upgradeScreen.SetActive(true);
-            }
-        }
-        else
-        {
-            if (GameManager.checkScene("AntiBreakout2"))
-            {
-                upgradeScreen.SetActive(false);
-            }
         }
     }
 
@@ -87,41 +68,11 @@ public class UIManager : MonoBehaviour
         return GameManager.sharedInstance.getGameWon();
     }
 
-    bool IsUpgradeScreenActive() // Renamed to avoid conflict
-    {
-        return GameManager.sharedInstance.getUpgradeScreen();
-    }
-
     public void startGame()
     {
         winPanel.SetActive(false);
         lossPanel.SetActive(false);
         startPanel.SetActive(false);
-    }
-
-    public void resumeGame()
-    {
-        //upgradeScreen.SetActive(false);
-        //Debug.Log("upgrade screen false");
-        //if (!upgradeScreen.activeSelf)
-        //{
-        //    Debug.Log("Upgrade screen is deactive!");
-        //    upgradeScreen.transform.localScale = new Vector3(0f, 0f, 0f);
-        //}
-
-    }
-    public void displayUpgradeScreen()
-    {
-        upgradeScreen.SetActive(true);
-        upgradeScreen.transform.localScale = new Vector3(1f, 3f, 1f);
-        Debug.Log("upgrade screen");
-
-        if (upgradeScreen.activeSelf)
-        {
-            Debug.Log("Upgrade screen is active!");
-        }
-  
-
     }
 
     public void controlScreen()

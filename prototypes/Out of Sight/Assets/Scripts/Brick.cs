@@ -101,17 +101,6 @@ public class Brick : MonoBehaviour
         return new int[] { positionXInSwarm, positionYInSwarm };
     }
 
-    public void setBounces(int i)
-    {
-        this.bounces = i;
-        this.bouncesLeft = i;
-        Debug.Log(this.bouncesLeft);
-        if (bouncesLeft > 1)
-        {
-            changeColor(denseColor);
-        }
-    }
-
     public void SetSelected(bool isSelected)
     {
         if (isSelected)

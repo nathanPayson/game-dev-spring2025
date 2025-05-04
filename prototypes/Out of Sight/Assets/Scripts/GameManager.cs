@@ -40,9 +40,6 @@ public class GameManager : MonoBehaviour
 
     int clusterColumns;
     int clusterRows;
-
-
-    bool upgradeScreen = false;
     bool gameWon = false;
     bool breakTimer = false;
     int level = 1;
@@ -117,10 +114,6 @@ public class GameManager : MonoBehaviour
                 {
                     gameWon = true;
                 }
-                else
-                {
-                    upgradeScreen = true;
-                }
 
                 Debug.Log("still defeated");
             }
@@ -137,6 +130,7 @@ public class GameManager : MonoBehaviour
         
     }
     public void outOfBounds(){
+        Debug.Log("Out of Bounds");
         if(lives>1){
             resetBall();
         }
@@ -152,6 +146,7 @@ public class GameManager : MonoBehaviour
     public void resetBall(){
         if (!gameWon && gameStarted)
         {
+            Debug.Log("Reset");
             ball.GetComponent<Ball>().resetBall();
             lives--;
         }
@@ -175,13 +170,6 @@ public class GameManager : MonoBehaviour
         return gameWon;
     }
 
-    public bool getUpgradeScreen()
-    {
-        Debug.Log("Upgrade Screen is " + upgradeScreen);
-        return upgradeScreen;
-    }
-
-
     
     public void startGame(){
         gameStarted = true;
@@ -197,22 +185,21 @@ public class GameManager : MonoBehaviour
         if(checkScene("AntiBreakout1"))
         {
             gameWon = false;
-            upgradeScreen = false;
             gameEnded = false;
-            lives = 1;
+            lives = 20;
             swarm.SetActive(true);
             swarm.GetComponent<Cluster>().resetSwarm();
             ball.GetComponent<Ball>().resetBall();
-            //StartCoroutine(Timer(20));
+            StartCoroutine(Timer(20));
             UIManager.sharedInstance.startGame();
         }
         if(checkScene("AntiBreakout1Prototype") || checkScene("AntiBreakout1TestScene"))
         {
             gameWon = false;
-            upgradeScreen = false;
             gameEnded = false;
-            lives = 1;
+            lives = 20;
             swarm.SetActive(true);
+            Debug.Log("Starting");
             swarm.GetComponent<Cluster>().resetSwarm();
             ball.GetComponent<Ball>().resetBall();
             StartCoroutine(Timer(20));
@@ -247,7 +234,6 @@ public class GameManager : MonoBehaviour
     {
         if (checkScene("AntiBreakout1"))
         {
-            upgradeScreen = false;
             ball.GetComponent<Ball>().resetBall();
             //ResetRows and Columns
             clusterColumns = brickAmount;
@@ -285,8 +271,6 @@ public class GameManager : MonoBehaviour
     {
         int s = name.Length;
         Scene currentScene = SceneManager.GetActiveScene();
-        Debug.Log(name);
-        Debug.Log(currentScene.name.Substring(0,s));
         return currentScene.name.Substring(0,s) == name;
     }
 
@@ -330,8 +314,9 @@ public class GameManager : MonoBehaviour
                 }
                 yield return new WaitForSeconds(1f);
             }
-            if (!gameWon)
+            else if (!gameWon)
             {
+                Debug.Log("Game Lost");
                 lives = 0;
                 gameOver();
             }

@@ -43,13 +43,13 @@ public class Ball : MonoBehaviour
             float initialDirectionX = Random.Range(-0.8f,0.8f);
             rb.linearVelocity = new Vector2(initialDirectionX,-Mathf.Sqrt(1 - initialDirectionX*initialDirectionX))*ballSpeed;
         }
-        else if(GameManager.checkScene("AntiBreakout1")||GameManager.checkScene("NewAntiBreakout2")||GameManager.checkSceneContains("AB2LV")){
+        else if(GameManager.checkScene("AntiBreakout1Prototype")||GameManager.checkScene("AntiBreakout1")||GameManager.checkScene("NewAntiBreakout2")||GameManager.checkSceneContains("AB2LV")){
             gameObject.SetActive(true);
             gameObject.transform.position = new Vector3(0,0,0);
             gameObject.transform.rotation = Quaternion.identity;
             ballSpeed = initialBallSpeed;
             setStartingVelocity(ballSpeed);
-            }
+        }
 
     }
 

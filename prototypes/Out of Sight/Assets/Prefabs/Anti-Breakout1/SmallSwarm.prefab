@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a3cb909deb4a048bbf40b28a9a167c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columnCount: 4
-  rowCount: 5
+  columnCount: 10
+  rowCount: 8
   brickprefab: {fileID: 4090144977637578026, guid: 4307e74297ba6724ebd8a47432ffa130, type: 3}
   explosiveBrickprefab: {fileID: 4090144977637578026, guid: 16e5e7eceb84d0446910ffa8f2996cfb, type: 3}
   badBrickprefab: {fileID: 4090144977637578026, guid: af9969ed524de974c92ad17bd25c95b0, type: 3}
